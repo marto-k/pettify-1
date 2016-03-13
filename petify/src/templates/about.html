@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}About{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="about" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec1" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>{% include "_brandname.html" %}</h1>
+        <p class="lead">This pet website was began 1 month ago.Its  owned by 3 partners who each had a part to play in makin what the company is now.The main reason for starting this company is because of the rising need of pets due to boredorm.So as a means of killing boredorm we decided to make out something that would bring change to people's lives.We discovered a pet company is the thing we wanted.</br>
+        Most of the time we handle sales online that's the reason why we wanted to start this website.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Meet The Team</h2>
+        <p class="lead">The Wonderful People Behind the Site</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/9/" alt="profile pic"></div>
+        <p class="heavy text-center">Cassindy dev</p>
+        <h2>Front-end developer</h2>
+        <p>She has very good expertise and has coded for more than five years </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/2/" alt="profile pic"></div>
+        <p class="heavy text-center">James Maqueen</p>
+        <h2>CEO</h2>
+        <p>He has very good marketing skills and also has multiple connections with prominent business men and women of the region </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/1/" alt="profile pic"></div>
+        <p class="heavy text-center">Kate Middleton</p>
+        <h2>Front-end designer</h2>
+        <p>She is good in django  </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="sec3">
+  <div class="container">
+    <div class="row">
+      <div id="map-outer" class="col-md-12">
+        <div id="address" class="col-md-4">
+          <h2>Our Location</h2>
+          <address>
+            <strong>Edge Solutions Ltd.</strong><br>
+            Taj Mahal<br>
+            Agra<br>
+            Uttar Pradesh<br>
+            India - 282001<br>
+            <abbr>P:</abbr> +91 0562 222 6431
+          </address>
+        </div>
+        <div id="map-container" class="col-md-8"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock container %}
+
+{% block scripts %}
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script>
+
+   function init_map() {
+     // Enter the latitude and longitude of your office here
+	 var myLocation = new google.maps.LatLng(27.176141, 78.042370);
+
+     var mapOptions = {
+          center: myLocation,
+          zoom: 14
+     };
+
+	 var marker = new google.maps.Marker({
+	   position: myLocation,
+	   title:"We are here"});
+
+     var map = new google.maps.Map(document.getElementById("map-container"),
+                                   mapOptions);
+	 marker.setMap(map);
+   }
+
+   google.maps.event.addDomListener(window, 'load', init_map);
+  </script>
+{% endblock scripts %}
